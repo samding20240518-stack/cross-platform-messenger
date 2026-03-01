@@ -12,24 +12,8 @@ export class AudioManager extends Phaser.Events.EventEmitter {
   }
 
   private createSounds(): void {
-    // 使用 Web Audio API 生成简单音效
-    // 新消息提示音
-    this.sounds.set('message', this.scene.sound.add('message', { volume: 0.5 }))
-    
-    // 线索发现音
-    this.sounds.set('clue', this.scene.sound.add('clue', { volume: 0.6 }))
-    
-    // 阅后即焚警告音
-    this.sounds.set('burn', this.scene.sound.add('burn', { volume: 0.4 }))
-    
-    // 解谜成功音
-    this.sounds.set('success', this.scene.sound.add('success', { volume: 0.7 }))
-    
-    // 错误/失败音
-    this.sounds.set('error', this.scene.sound.add('error', { volume: 0.4 }))
-    
-    // 按钮点击音
-    this.sounds.set('click', this.scene.sound.add('click', { volume: 0.3 }))
+    // 使用 Web Audio API 生成音效，不依赖外部音频文件
+    // 不需要预创建，直接在 playTone 中生成
   }
 
   play(soundName: string): void {
