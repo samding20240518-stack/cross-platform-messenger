@@ -1,7 +1,7 @@
-import { GameState } from '../src/systems/GameState'
-import { PuzzleSystem } from '../src/systems/PuzzleSystem'
-import { AudioManager } from '../src/systems/AudioManager'
-import { AchievementSystem } from '../src/systems/AchievementSystem'
+import { GameState } from '../../src/systems/GameState'
+import { PuzzleSystem } from '../../src/systems/PuzzleSystem'
+import { AudioManager } from '../../src/systems/AudioManager'
+import { AchievementSystem } from '../../src/systems/AchievementSystem'
 
 describe('GameState', () => {
   let gameState: GameState
@@ -87,6 +87,7 @@ describe('PuzzleSystem', () => {
   let mockGameState: GameState
 
   beforeEach(() => {
+    localStorage.clear()
     mockGameState = new GameState()
     puzzleSystem = new PuzzleSystem(mockGameState)
   })

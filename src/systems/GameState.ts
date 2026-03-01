@@ -71,11 +71,11 @@ export class GameState {
   private saveToStorage(): void {
     try {
       const data = {
-        clues: Array.from(this.discoveredClues),
-        chapter: this.currentChapter,
-        progress: this.gameProgress
+        discoveredClues: Array.from(this.discoveredClues),
+        currentChapter: this.currentChapter,
+        gameProgress: this.gameProgress
       }
-      localStorage.setItem('cpm-save', JSON.stringify(data))
+      localStorage.setItem('crossPlatformMessenger', JSON.stringify(data))
     } catch (e) {
       console.warn('Failed to save game state')
     }
@@ -83,12 +83,12 @@ export class GameState {
 
   private loadFromStorage(): void {
     try {
-      const saved = localStorage.getItem('cpm-save')
+      const saved = localStorage.getItem('crossPlatformMessenger')
       if (saved) {
         const data = JSON.parse(saved)
-        this.discoveredClues = new Set(data.clues || [])
-        this.currentChapter = data.chapter || 'chapter1'
-        this.gameProgress = data.progress || 0
+        this.discoveredClues = new Set(data.discoveredClues || data.clues || [])
+        this.currentChapter = data.currentChapter || data.chapter || 'chapter1'
+        this.gameProgress = data.gameProgress || data.progress || 0
       }
     } catch (e) {
       console.warn('Failed to load game state')
