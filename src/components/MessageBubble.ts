@@ -97,7 +97,7 @@ export class MessageBubble extends Phaser.GameObjects.Container {
       if (audioManager) {
         audioManager.playGameSound('burn-warning')
       }
-      
+
       // 闪烁动画
       this.scene.tweens.add({
         targets: this.burnIcon,

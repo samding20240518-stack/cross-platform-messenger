@@ -333,7 +333,10 @@
 <a name='L268'></a><a href='#L268'>268</a>
 <a name='L269'></a><a href='#L269'>269</a>
 <a name='L270'></a><a href='#L270'>270</a>
-<a name='L271'></a><a href='#L271'>271</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -552,6 +555,9 @@
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -633,7 +639,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       description: '收集第一条线索',
       icon: '🔍',
       unlocked: false,
-      condition: () =&gt; this.gameState.getDiscoveredClues() &gt;= 1
+      condition: () =&gt; this.gameState.getDiscoveredClues() &gt;= 1,
     })
 &nbsp;
     this.achievements.set('half-clues', {
@@ -642,7 +648,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       description: '收集一半线索',
       icon: '📋',
       unlocked: false,
-      condition: () =&gt; this.gameState.getDiscoveredClues() &gt;= 3
+      condition: () =&gt; this.gameState.getDiscoveredClues() &gt;= 3,
     })
 &nbsp;
     this.achievements.set('all-clues', {
@@ -651,7 +657,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       description: '收集所有线索',
       icon: '🏆',
       unlocked: false,
-      condition: () =&gt; this.gameState.getDiscoveredClues() &gt;= 6
+      condition: () =&gt; this.gameState.getDiscoveredClues() &gt;= 6,
     })
 &nbsp;
     this.achievements.set('speed-reader', {
@@ -660,7 +666,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       description: '在阅后即焚消失前收集线索',
       icon: '⚡',
       unlocked: false,
-      condition: () =&gt; false // 需要特殊追踪
+      condition: () =&gt; false, // 需要特殊追踪
     })
 &nbsp;
     this.achievements.set('puzzle-master', {
@@ -669,7 +675,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       description: '解开所有谜题',
       icon: '🧩',
       unlocked: false,
-      condition: () =&gt; false // 需要谜题系统配合
+      condition: () =&gt; false, // 需要谜题系统配合
     })
 &nbsp;
     this.achievements.set('completionist', {
@@ -678,7 +684,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       description: '收集所有线索并解开所有谜题',
       icon: '👑',
       unlocked: false,
-      condition: () =&gt; this.gameState.getDiscoveredClues() &gt;= 6
+      condition: () =&gt; this.gameState.getDiscoveredClues() &gt;= 6,
     })
 &nbsp;
     this.achievements.set('collector', {
@@ -687,7 +693,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       description: '收集 5 个物品',
       icon: '📦',
       unlocked: false,
-      condition: () =&gt; (this.getProgress('collector') &gt;= 5)
+      condition: () =&gt; this.getProgress('collector') &gt;= 5,
     })
 &nbsp;
     // 测试用的成就
@@ -697,7 +703,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       description: '用于测试的成就',
       icon: '🧪',
       unlocked: false,
-      condition: () =&gt; false
+      condition: () =&gt; false,
     })
 &nbsp;
     this.achievements.set('loaded-achievement', {
@@ -706,7 +712,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       description: '用于加载测试的成就',
       icon: '📥',
       unlocked: false,
-      condition: () =&gt; false
+      condition: () =&gt; false,
     })
 &nbsp;
     this.achievements.set('achievement1', {
@@ -715,7 +721,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       description: '第一个成就',
       icon: '🥇',
       unlocked: false,
-      condition: () =&gt; false
+      condition: () =&gt; false,
     })
 &nbsp;
     this.achievements.set('achievement2', {
@@ -724,14 +730,14 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       description: '第二个成就',
       icon: '🥈',
       unlocked: false,
-      condition: () =&gt; false
+      condition: () =&gt; false,
     })
   }
 &nbsp;
   checkAchievements(): string[] {
     const newlyUnlocked: string[] = []
 &nbsp;
-    this.achievements.forEach(achievement =&gt; {
+    this.achievements.forEach((achievement) =&gt; {
       if (!achievement.unlocked &amp;&amp; achievement.condition()) {
         achievement.unlocked = true
         newlyUnlocked.push(achievement.id)
@@ -751,7 +757,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  getUnlockedCount(</span>): number {
-<span class="cstat-no" title="statement not covered" >    return Array.from(this.achievements.values()).filter(<span class="fstat-no" title="function not covered" >a </span>=&gt; <span class="cstat-no" title="statement not covered" >a.unlocked)</span>.length</span>
+<span class="cstat-no" title="statement not covered" >    return Array.from(this.achievements.values()).filter(<span class="fstat-no" title="function not covered" >(a</span>) =&gt; <span class="cstat-no" title="statement not covered" >a.unlocked)</span>.length</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  getTotalCount(</span>): number {
@@ -769,7 +775,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  reset(</span>): void {
-<span class="cstat-no" title="statement not covered" >    this.achievements.forEach(<span class="fstat-no" title="function not covered" >a </span>=&gt; <span class="cstat-no" title="statement not covered" >a.unlocked = false)</span></span>
+<span class="cstat-no" title="statement not covered" >    this.achievements.forEach(<span class="fstat-no" title="function not covered" >(a</span>) =&gt; (<span class="cstat-no" title="statement not covered" >a.unlocked = false)</span>)</span>
   }
 &nbsp;
   // 特殊成就追踪
@@ -795,7 +801,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
     const current = this.progressMap.get(id) || 0
     const updated = current + progress
     this.progressMap.set(id, updated)
-    
+&nbsp;
     // 检查是否需要解锁成就
     this.checkAchievements()
   }
@@ -812,15 +818,18 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
 &nbsp;
   getAllUnlocked(): string[] {
     return Array.from(this.achievements.values())
-      .filter(a =&gt; a.unlocked)
-      .map(a =&gt; a.id)
+      .filter((a) =&gt; a.unlocked)
+      .map((a) =&gt; a.id)
   }
 &nbsp;
   private saveToStorage(): void {
     try {
       const data = {
-        achievements: Array.from(this.achievements.entries()).map(([id, a]) =&gt; ({ id, unlocked: a.unlocked })),
-        progress: Array.from(this.progressMap.entries())
+        achievements: Array.from(this.achievements.entries()).map(([id, a]) =&gt; ({
+          id,
+          unlocked: a.unlocked,
+        })),
+        progress: Array.from(this.progressMap.entries()),
       }
       localStorage.setItem('crossPlatformMessenger_achievements', JSON.stringify(data))
     } catch (e) {
@@ -833,7 +842,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
       const saved = localStorage.getItem('crossPlatformMessenger_achievements')
       if (saved) {
         const data = JSON.parse(saved)
-        
+&nbsp;
         // 支持测试格式: { unlocked: [...], progress: {...} }
         if (data.unlocked &amp;&amp; Array.isArray(data.unlocked)) {
           data.unlocked.forEach((id: string) =&gt; {
@@ -843,7 +852,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
             }
           })
         }
-        
+&nbsp;
         // 支持代码格式: { achievements: [...], progress: [...] }
         if (data.achievements &amp;&amp; Array.isArray(data.achievements)) {
           data.achievements.forEach((item: { id: string; unlocked: boolean }) =&gt; {
@@ -853,14 +862,14 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
             }
           })
         }
-        
+&nbsp;
         // 支持测试格式: progress: { 'collector': 3 }
         if (data.progress &amp;&amp; typeof data.progress === 'object' &amp;&amp; !Array.isArray(data.progress)) {
           Object.entries(data.progress).forEach(([id, value]) =&gt; {
             this.progressMap.set(id, value as number)
           })
         }
-        
+&nbsp;
         // 支持代码格式: progress: [['collector', 3]]
         if (data.progress &amp;&amp; Array.isArray(data.progress)) {
           data.progress.forEach(<span class="fstat-no" title="function not covered" >([</span>id, value]: [string, number]) =&gt; {
@@ -880,7 +889,7 @@ export class AchievementSystem extends Phaser.Events.EventEmitter {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-01T09:16:45.077Z
+                at 2026-03-02T09:57:02.910Z
             </div>
         <script src="prettify.js"></script>
         <script>

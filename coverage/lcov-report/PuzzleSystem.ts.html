@@ -228,7 +228,8 @@
 <a name='L163'></a><a href='#L163'>163</a>
 <a name='L164'></a><a href='#L164'>164</a>
 <a name='L165'></a><a href='#L165'>165</a>
-<a name='L166'></a><a href='#L166'>166</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -239,20 +240,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -265,7 +266,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -278,7 +279,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -290,7 +291,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -351,6 +352,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -426,7 +428,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
         // 接受 192.168.1.100 或类似格式
         return input.includes('192.168') &amp;&amp; input.includes('100')
       },
-      hint: 'WhatsApp给了前半，Telegram给了后半，组合起来是 192.168.1.100'
+      hint: 'WhatsApp给了前半，Telegram给了后半，组合起来是 192.168.1.100',
     })
 &nbsp;
     // 谜题2: 凯撒密码
@@ -439,7 +441,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
         const normalized = <span class="cstat-no" title="statement not covered" >input.toLowerCase().trim()</span>
 <span class="cstat-no" title="statement not covered" >        return normalized === 'attack at dawn' || normalized === 'attack'</span>
       },
-      hint: '每个字母向前移动3位，d→a, w→t...'
+      hint: '每个字母向前移动3位，d→a, w→t...',
     })
 &nbsp;
     // 谜题3: 嫌疑人识别
@@ -451,7 +453,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
       checkSolution: <span class="fstat-no" title="function not covered" >(i</span>nput: string) =&gt; {
 <span class="cstat-no" title="statement not covered" >        return input.toLowerCase().includes('phantom')</span>
       },
-      hint: 'Discord上的那个人叫自己什么？'
+      hint: 'Discord上的那个人叫自己什么？',
     })
 &nbsp;
     // 测试用谜题
@@ -463,7 +465,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
       checkSolution: (input: string) =&gt; {
         return input.includes('192.168') &amp;&amp; input.includes('100')
       },
-      hint: '组合 IP 地址: 192.168.1.100'
+      hint: '组合 IP 地址: 192.168.1.100',
     })
   }
 &nbsp;
@@ -475,7 +477,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
     const puzzle = <span class="cstat-no" title="statement not covered" >this.puzzles.get(puzzleId)</span>
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (!puzzle) <span class="cstat-no" title="statement not covered" >return false</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return puzzle.requiredClues.every(<span class="fstat-no" title="function not covered" >clue </span>=&gt; <span class="cstat-no" title="statement not covered" >discoveredClues.has(clue))</span></span>
+<span class="cstat-no" title="statement not covered" >    return puzzle.requiredClues.every(<span class="fstat-no" title="function not covered" >(c</span>lue) =&gt; <span class="cstat-no" title="statement not covered" >discoveredClues.has(clue))</span></span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  attemptSolution(</span>puzzleId: string, input: string): boolean {
@@ -483,7 +485,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (!puzzle) <span class="cstat-no" title="statement not covered" >return false</span></span>
 &nbsp;
     const isCorrect = <span class="cstat-no" title="statement not covered" >puzzle.checkSolution(input)</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (isCorrect &amp;&amp; !this.solvedPuzzles.has(puzzleId)) {</span>
 <span class="cstat-no" title="statement not covered" >      this.solvedPuzzles.add(puzzleId)</span>
 <span class="cstat-no" title="statement not covered" >      this.emit('puzzle-solved', puzzleId)</span>
@@ -497,7 +499,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  getAvailablePuzzles(</span>discoveredClues: Set&lt;string&gt;): Puzzle[] {
-<span class="cstat-no" title="statement not covered" >    return Array.from(this.puzzles.values()).filter(<span class="fstat-no" title="function not covered" >puzzle </span>=&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return Array.from(this.puzzles.values()).filter(<span class="fstat-no" title="function not covered" >(p</span>uzzle) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      return this.canAttempt(puzzle.id, discoveredClues)</span>
     })
   }
@@ -510,7 +512,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
 <span class="fstat-no" title="function not covered" >  getProgress(</span>): { total: number; solved: number } {
 <span class="cstat-no" title="statement not covered" >    return {</span>
       total: this.puzzles.size,
-      solved: this.solvedPuzzles.size
+      solved: this.solvedPuzzles.size,
     }
   }
 &nbsp;
@@ -520,7 +522,8 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
 &nbsp;
   // 为测试添加的方法
   validateIPAddress(ip: string): boolean {
-    const pattern = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
+    const pattern =
+      /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
     return pattern.test(ip)
   }
 &nbsp;
@@ -529,9 +532,9 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!puzzle) <span class="cstat-no" title="statement not covered" >return false</span>
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.gameState) <span class="cstat-no" title="statement not covered" >return false</span>
     <span class="missing-if-branch" title="if path not taken" >I</span>if (puzzle.requiredClues.length === 0) <span class="cstat-no" title="statement not covered" >return false</span>
-    
+&nbsp;
     // 只要有至少一个必需线索就可以尝试
-    return puzzle.requiredClues.some(clue =&gt; this.gameState.hasClue(clue))
+    return puzzle.requiredClues.some((clue) =&gt; this.gameState.hasClue(clue))
   }
 &nbsp;
   solve(puzzleId: string, answer: string): { success: boolean; hint?: string; error?: string } {
@@ -565,7 +568,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-01T09:16:45.077Z
+                at 2026-03-02T09:57:02.910Z
             </div>
         <script src="prettify.js"></script>
         <script>

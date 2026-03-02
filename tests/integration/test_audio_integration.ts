@@ -54,7 +54,11 @@ describe('音效系统集成测试', () => {
       setItem: jest.fn(),
       removeItem: jest.fn()
     }
-    global.localStorage = localStorageMock as any
+    Object.defineProperty(global, 'localStorage', {
+      value: localStorageMock,
+      writable: true,
+      configurable: true
+    })
     
     // 模拟Web Audio API
     const mockAudioContext = {
