@@ -16,7 +16,6 @@ export class InputPanel extends Phaser.GameObjects.Container {
     super(scene, x, y)
     this.panelWidth = width
     this.panelHeight = height
-    super(scene, x, y)
     this.createPanel()
     scene.add.existing(this)
   }
