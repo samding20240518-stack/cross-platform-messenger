@@ -11,7 +11,7 @@ export class BootScene extends Phaser.Scene {
   }
 
   create(): void {
-    this.scene.start('DesktopScene')
+    this.scene.start('IntroScene')
   }
 
   private createUIAssets(): void {
