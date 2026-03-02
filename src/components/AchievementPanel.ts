@@ -19,7 +19,6 @@ export class AchievementPanel extends Phaser.GameObjects.Container {
     super(scene, x, y)
     this.panelWidth = width
     this.panelHeight = height
-    super(scene, x, y)
     this.achievementSystem = achievementSystem
     this.createPanel()
     scene.add.existing(this)

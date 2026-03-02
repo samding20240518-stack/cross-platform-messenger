@@ -23,7 +23,11 @@ export class AudioManager extends Phaser.Events.EventEmitter {
   private handleInitError(): void {
     try {
       // 初始化检查
-      if (typeof window !== 'undefined' && !window.AudioContext && !(window as any).webkitAudioContext) {
+      if (
+        typeof window !== 'undefined' &&
+        !window.AudioContext &&
+        !(window as any).webkitAudioContext
+      ) {
         console.warn('Web Audio API not supported')
         this.logConfigChange('audio_init_failed', { error: 'Web Audio API not supported' })
       }
@@ -43,7 +47,7 @@ export class AudioManager extends Phaser.Events.EventEmitter {
           timestamp: new Date().toISOString(),
           key,
           value,
-          modelUsed: 'doubao-code'
+          modelUsed: 'doubao-code',
         })
         localStorage.setItem('audio_config_changes', JSON.stringify(logs))
       } catch (e) {
@@ -63,7 +67,7 @@ export class AudioManager extends Phaser.Events.EventEmitter {
           timestamp: new Date().toISOString(),
           event,
           details,
-          modelUsed: 'doubao-code'
+          modelUsed: 'doubao-code',
         })
         localStorage.setItem('audio_event_logs', JSON.stringify(logs))
       } catch (e) {
@@ -159,10 +163,10 @@ export class AudioManager extends Phaser.Events.EventEmitter {
    */
   startBackgroundMusic(): void {
     if (this.isMuted || this.isMusicPlaying) return
-    
+
     this.isMusicPlaying = true
     this.logConfigChange('background_music', { action: 'start' })
-    
+
     // 使用 Web Audio API 创建循环背景音乐
     try {
       const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
@@ -178,10 +182,10 @@ export class AudioManager extends Phaser.Events.EventEmitter {
    */
   stopBackgroundMusic(): void {
     if (!this.isMusicPlaying) return
-    
+
     this.isMusicPlaying = false
     this.logConfigChange('background_music', { action: 'stop' })
-    
+
     if (this.backgroundMusic) {
       try {
         this.backgroundMusic.close?.()
