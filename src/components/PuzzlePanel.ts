@@ -20,7 +20,6 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
     super(scene, x, y)
     this.panelWidth = width
     this.panelHeight = height
-    super(scene, x, y)
     this.puzzleSystem = new PuzzleSystem()
     this.createPanel()
     scene.add.existing(this)

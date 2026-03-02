@@ -24,7 +24,6 @@ export class MessageBubble extends Phaser.GameObjects.Container {
     this.isReceivedFlag = isReceived
     this.burnTime = burnTime
     this.isClueFlag = isClue
-    super(scene, x, y)
 
     this.createBubble(content)
     scene.add.existing(this)
