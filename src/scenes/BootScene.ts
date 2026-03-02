@@ -17,25 +17,25 @@ export class BootScene extends Phaser.Scene {
   private createUIAssets(): void {
     // 创建WhatsApp绿色圆角矩形
     const whatsappGraphics = this.make.graphics({ x: 0, y: 0 })
-    whatsappGraphics.fillStyle(0x25D366, 1)
+    whatsappGraphics.fillStyle(0x25d366, 1)
     whatsappGraphics.fillRoundedRect(0, 0, 64, 64, 12)
     whatsappGraphics.generateTexture('whatsapp-icon', 64, 64)
 
     // 创建Telegram蓝色圆角矩形
     const telegramGraphics = this.make.graphics({ x: 0, y: 0 })
-    telegramGraphics.fillStyle(0x0088CC, 1)
+    telegramGraphics.fillStyle(0x0088cc, 1)
     telegramGraphics.fillRoundedRect(0, 0, 64, 64, 12)
     telegramGraphics.generateTexture('telegram-icon', 64, 64)
 
     // 创建Discord紫色圆角矩形
     const discordGraphics = this.make.graphics({ x: 0, y: 0 })
-    discordGraphics.fillStyle(0x5865F2, 1)
+    discordGraphics.fillStyle(0x5865f2, 1)
     discordGraphics.fillRoundedRect(0, 0, 64, 64, 12)
     discordGraphics.generateTexture('discord-icon', 64, 64)
 
     // 创建邮件红色圆角矩形
     const emailGraphics = this.make.graphics({ x: 0, y: 0 })
-    emailGraphics.fillStyle(0xEA4335, 1)
+    emailGraphics.fillStyle(0xea4335, 1)
     emailGraphics.fillRoundedRect(0, 0, 64, 64, 12)
     emailGraphics.generateTexture('email-icon', 64, 64)
 

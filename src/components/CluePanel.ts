@@ -21,11 +21,13 @@ export class CluePanel extends Phaser.GameObjects.Container {
     this.add(bg)
 
     // 标题
-    const title = this.scene.add.text(175, 20, '📋 侦探笔记本', {
-      fontSize: '20px',
-      color: '#ffd700',
-      fontFamily: 'sans-serif'
-    }).setOrigin(0.5)
+    const title = this.scene.add
+      .text(175, 20, '📋 侦探笔记本', {
+        fontSize: '20px',
+        color: '#ffd700',
+        fontFamily: 'sans-serif',
+      })
+      .setOrigin(0.5)
     this.add(title)
 
     // 线索列表容器
@@ -33,11 +35,13 @@ export class CluePanel extends Phaser.GameObjects.Container {
     this.add(this.clueList)
 
     // 空状态提示
-    const emptyText = this.scene.add.text(175, 280, '暂无线索\n与NPC对话收集线索', {
-      fontSize: '14px',
-      color: '#666666',
-      align: 'center'
-    }).setOrigin(0.5)
+    const emptyText = this.scene.add
+      .text(175, 280, '暂无线索\n与NPC对话收集线索', {
+        fontSize: '14px',
+        color: '#666666',
+        align: 'center',
+      })
+      .setOrigin(0.5)
     ;(emptyText as any).setName('empty-hint')
     this.add(emptyText)
   }
@@ -68,7 +72,7 @@ export class CluePanel extends Phaser.GameObjects.Container {
 
     // 线索图标
     const icon = this.scene.add.text(15, 15, clueInfo.icon, {
-      fontSize: '24px'
+      fontSize: '24px',
     })
     item.add(icon)
 
@@ -76,7 +80,7 @@ export class CluePanel extends Phaser.GameObjects.Container {
     const title = this.scene.add.text(50, 10, clueInfo.title, {
       fontSize: '14px',
       color: '#ffd700',
-      fontFamily: 'sans-serif'
+      fontFamily: 'sans-serif',
     })
     item.add(title)
 
@@ -84,7 +88,7 @@ export class CluePanel extends Phaser.GameObjects.Container {
     const desc = this.scene.add.text(50, 32, clueInfo.description, {
       fontSize: '11px',
       color: '#a0aec0',
-      fontFamily: 'sans-serif'
+      fontFamily: 'sans-serif',
     })
     item.add(desc)
 
@@ -98,7 +102,7 @@ export class CluePanel extends Phaser.GameObjects.Container {
       alpha: 1,
       x: 0,
       duration: 400,
-      ease: 'Back.out'
+      ease: 'Back.out',
     })
 
     // 更新其他线索位置
@@ -114,7 +118,7 @@ export class CluePanel extends Phaser.GameObjects.Container {
           targets: clue,
           y: targetY,
           duration: 300,
-          ease: 'Power2'
+          ease: 'Power2',
         })
       }
     })
@@ -125,40 +129,42 @@ export class CluePanel extends Phaser.GameObjects.Container {
       'ip-part1': {
         icon: '🌐',
         title: 'IP地址 (前半)',
-        description: '192.168.xxx.xxx'
+        description: '192.168.xxx.xxx',
       },
       'ip-part2': {
         icon: '🌐',
         title: 'IP地址 (后半)',
-        description: 'xxx.xxx.1.100'
+        description: 'xxx.xxx.1.100',
       },
       'cipher-key': {
         icon: '🔑',
         title: '解密密钥',
-        description: 'Caesar +3'
+        description: 'Caesar +3',
       },
       'suspect-name': {
         icon: '👤',
         title: '嫌疑人代号',
-        description: 'Phantom'
+        description: 'Phantom',
       },
       'time-stamp': {
         icon: '⏰',
         title: '案发时间',
-        description: '2024-02-28 03:00'
+        description: '2024-02-28 03:00',
       },
-      'location': {
+      location: {
         icon: '📍',
         title: '服务器位置',
-        description: '新加坡数据中心'
-      }
+        description: '新加坡数据中心',
+      },
     }
 
-    return clueDatabase[clueId] || {
-      icon: '❓',
-      title: '未知线索',
-      description: '需要进一步调查'
-    }
+    return (
+      clueDatabase[clueId] || {
+        icon: '❓',
+        title: '未知线索',
+        description: '需要进一步调查',
+      }
+    )
   }
 
   hasClue(clueId: string): boolean {

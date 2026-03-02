@@ -1,14 +1,15 @@
 import Phaser from 'phaser'
 
 export class AudioManager extends Phaser.Events.EventEmitter {
-  private scene: Phaser.Scene
   private sounds: Map<string, Phaser.Sound.BaseSound> = new Map()
   private isMuted: boolean = false
   private volume: number = 1.0
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   constructor(_scene?: Phaser.Scene) {
     super()
-    this.scene = _scene!
+    // Scene reserved for future use
+    void _scene
     this.createSounds()
   }
 
@@ -19,7 +20,7 @@ export class AudioManager extends Phaser.Events.EventEmitter {
 
   play(soundName: string): void {
     if (this.isMuted) return
-    
+
     const sound = this.sounds.get(soundName)
     if (sound) {
       sound.play()
@@ -60,21 +61,21 @@ export class AudioManager extends Phaser.Events.EventEmitter {
 
   private playTone(frequency: number, duration: number, type: OscillatorType): void {
     if (this.isMuted) return
-    
+
     try {
       const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
       const oscillator = audioContext.createOscillator()
       const gainNode = audioContext.createGain()
-      
+
       oscillator.connect(gainNode)
       gainNode.connect(audioContext.destination)
-      
+
       oscillator.frequency.value = frequency
       oscillator.type = type
-      
+
       gainNode.gain.setValueAtTime(0.3, audioContext.currentTime)
       gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration)
-      
+
       oscillator.start(audioContext.currentTime)
       oscillator.stop(audioContext.currentTime + duration)
     } catch (e) {
@@ -94,17 +95,17 @@ export class AudioManager extends Phaser.Events.EventEmitter {
   // 为测试添加的方法
   playSFX(name: string): void {
     if (this.isMuted) return
-    
+
     const sfxMap: Record<string, () => void> = {
-      'message': () => this.playMessage(),
-      'clue': () => this.playClue(),
-      'burn': () => this.playBurn(),
-      'success': () => this.playSuccess(),
-      'error': () => this.playError(),
-      'click': () => this.playClick(),
-      'puzzle-solve': () => this.playSuccess()
+      message: () => this.playMessage(),
+      clue: () => this.playClue(),
+      burn: () => this.playBurn(),
+      success: () => this.playSuccess(),
+      error: () => this.playError(),
+      click: () => this.playClick(),
+      'puzzle-solve': () => this.playSuccess(),
     }
-    
+
     const playFn = sfxMap[name]
     if (playFn) {
       playFn()

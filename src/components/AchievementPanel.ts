@@ -42,21 +42,24 @@ export class AchievementPanel extends Phaser.GameObjects.Container {
     this.add(bg)
 
     // 标题
-    const title = this.scene.add.text(this.panelWidth / 2, 20, '🏆 成就系统', {
-      fontSize: '24px',
-      color: '#ffd700',
-      fontFamily: 'sans-serif'
-    }).setOrigin(0.5)
+    const title = this.scene.add
+      .text(this.panelWidth / 2, 20, '🏆 成就系统', {
+        fontSize: '24px',
+        color: '#ffd700',
+        fontFamily: 'sans-serif',
+      })
+      .setOrigin(0.5)
     this.add(title)
 
     // 进度
     const progress = this.achievementSystem.getUnlockedCount()
     const total = this.achievementSystem.getTotalCount()
-    const progressText = this.scene.add.text(this.panelWidth / 2, 55, 
-      `进度: ${progress}/${total}`, {
-      fontSize: '14px',
-      color: '#888888'
-    }).setOrigin(0.5)
+    const progressText = this.scene.add
+      .text(this.panelWidth / 2, 55, `进度: ${progress}/${total}`, {
+        fontSize: '14px',
+        color: '#888888',
+      })
+      .setOrigin(0.5)
     this.add(progressText)
 
     // 列表容器
@@ -64,10 +67,12 @@ export class AchievementPanel extends Phaser.GameObjects.Container {
     this.add(this.listContainer)
 
     // 关闭按钮
-    const closeBtn = this.scene.add.text(this.panelWidth - 30, 20, '✕', {
-      fontSize: '20px',
-      color: '#888888'
-    }).setInteractive({ useHandCursor: true })
+    const closeBtn = this.scene.add
+      .text(this.panelWidth - 30, 20, '✕', {
+        fontSize: '20px',
+        color: '#888888',
+      })
+      .setInteractive({ useHandCursor: true })
       .on('pointerdown', () => this.hide())
     this.add(closeBtn)
 
@@ -79,7 +84,7 @@ export class AchievementPanel extends Phaser.GameObjects.Container {
     this.listContainer.removeAll(true)
 
     const achievements = this.achievementSystem.getAllAchievements()
-    
+
     achievements.forEach((achievement, index) => {
       const y = index * 70
 
@@ -90,9 +95,8 @@ export class AchievementPanel extends Phaser.GameObjects.Container {
       this.listContainer.add(bg)
 
       // 图标
-      const icon = this.scene.add.text(15, y + 10, 
-        achievement.unlocked ? achievement.icon : '🔒', {
-        fontSize: '28px'
+      const icon = this.scene.add.text(15, y + 10, achievement.unlocked ? achievement.icon : '🔒', {
+        fontSize: '28px',
       })
       this.listContainer.add(icon)
 
@@ -100,16 +104,20 @@ export class AchievementPanel extends Phaser.GameObjects.Container {
       const name = this.scene.add.text(60, y + 8, achievement.name, {
         fontSize: '16px',
         color: achievement.unlocked ? '#ffd700' : '#666666',
-        fontFamily: 'sans-serif'
+        fontFamily: 'sans-serif',
       })
       this.listContainer.add(name)
 
       // 描述
-      const desc = this.scene.add.text(60, y + 32, 
-        achievement.unlocked ? achievement.description : '???', {
-        fontSize: '11px',
-        color: achievement.unlocked ? '#aaaaaa' : '#444444'
-      })
+      const desc = this.scene.add.text(
+        60,
+        y + 32,
+        achievement.unlocked ? achievement.description : '???',
+        {
+          fontSize: '11px',
+          color: achievement.unlocked ? '#aaaaaa' : '#444444',
+        }
+      )
       this.listContainer.add(desc)
     })
   }
@@ -126,24 +134,30 @@ export class AchievementPanel extends Phaser.GameObjects.Container {
     notif.add(bg)
 
     // 图标
-    const icon = this.scene.add.text(-170, 0, achievement.icon, {
-      fontSize: '36px'
-    }).setOrigin(0, 0.5)
+    const icon = this.scene.add
+      .text(-170, 0, achievement.icon, {
+        fontSize: '36px',
+      })
+      .setOrigin(0, 0.5)
     notif.add(icon)
 
     // 标题
-    const title = this.scene.add.text(0, -10, '成就解锁！', {
-      fontSize: '14px',
-      color: '#4ade80'
-    }).setOrigin(0.5)
+    const title = this.scene.add
+      .text(0, -10, '成就解锁！', {
+        fontSize: '14px',
+        color: '#4ade80',
+      })
+      .setOrigin(0.5)
     notif.add(title)
 
     // 名称
-    const name = this.scene.add.text(0, 15, achievement.name, {
-      fontSize: '20px',
-      color: '#ffd700',
-      fontFamily: 'sans-serif'
-    }).setOrigin(0.5)
+    const name = this.scene.add
+      .text(0, 15, achievement.name, {
+        fontSize: '20px',
+        color: '#ffd700',
+        fontFamily: 'sans-serif',
+      })
+      .setOrigin(0.5)
     notif.add(name)
 
     this.scene.add.existing(notif)
@@ -155,7 +169,7 @@ export class AchievementPanel extends Phaser.GameObjects.Container {
       scale: { from: 0.5, to: 1 },
       alpha: { from: 0, to: 1 },
       duration: 400,
-      ease: 'Back.out'
+      ease: 'Back.out',
     })
 
     // 自动消失
@@ -165,7 +179,7 @@ export class AchievementPanel extends Phaser.GameObjects.Container {
         alpha: 0,
         y: 50,
         duration: 500,
-        onComplete: () => notif.destroy()
+        onComplete: () => notif.destroy(),
       })
     })
   }

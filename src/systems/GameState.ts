@@ -10,7 +10,7 @@ export class GameState {
     'cipher-key',
     'suspect-name',
     'time-stamp',
-    'location'
+    'location',
   ]
 
   constructor() {
@@ -73,7 +73,7 @@ export class GameState {
       const data = {
         discoveredClues: Array.from(this.discoveredClues),
         currentChapter: this.currentChapter,
-        gameProgress: this.gameProgress
+        gameProgress: this.gameProgress,
       }
       localStorage.setItem('crossPlatformMessenger', JSON.stringify(data))
     } catch (e) {
@@ -100,10 +100,10 @@ export class GameState {
     const puzzleRequirements: Record<string, string[]> = {
       'ip-puzzle': ['ip-part1', 'ip-part2'],
       'cipher-puzzle': ['cipher-key'],
-      'identify-suspect': ['suspect-name', 'time-stamp', 'location']
+      'identify-suspect': ['suspect-name', 'time-stamp', 'location'],
     }
 
     const required = puzzleRequirements[puzzleId] || []
-    return required.every(clue => this.discoveredClues.has(clue))
+    return required.every((clue) => this.discoveredClues.has(clue))
   }
 }

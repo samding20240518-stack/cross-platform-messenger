@@ -11,9 +11,9 @@ const config: Phaser.Types.Core.GameConfig = {
   backgroundColor: '#1a1a2e',
   scale: {
     mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH
+    autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  scene: [BootScene, IntroScene, DesktopScene]
+  scene: [BootScene, IntroScene, DesktopScene],
 }
 
 new Phaser.Game(config)

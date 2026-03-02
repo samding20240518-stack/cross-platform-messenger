@@ -15,10 +15,10 @@ export class DesktopScene extends Phaser.Scene {
 
   // 平台配置
   private readonly platforms = [
-    { id: 'whatsapp', name: 'WhatsApp', color: 0x25D366, x: 50, y: 80 },
-    { id: 'telegram', name: 'Telegram', color: 0x0088CC, x: 470, y: 80 },
-    { id: 'discord', name: 'Discord', color: 0x5865F2, x: 50, y: 400 },
-    { id: 'email', name: '邮件', color: 0xEA4335, x: 470, y: 400 }
+    { id: 'whatsapp', name: 'WhatsApp', color: 0x25d366, x: 50, y: 80 },
+    { id: 'telegram', name: 'Telegram', color: 0x0088cc, x: 470, y: 80 },
+    { id: 'discord', name: 'Discord', color: 0x5865f2, x: 50, y: 400 },
+    { id: 'email', name: '邮件', color: 0xea4335, x: 470, y: 400 },
   ]
 
   constructor() {
@@ -70,37 +70,46 @@ export class DesktopScene extends Phaser.Scene {
     const bar = this.add.graphics()
     bar.fillStyle(0x0f0f23)
     bar.fillRect(0, 0, 1280, 40)
-    
+
     // 标题
     this.add.text(20, 10, '跨平台信使 - 调查员桌面', {
       fontSize: '18px',
       color: '#ffffff',
-      fontFamily: 'sans-serif'
+      fontFamily: 'sans-serif',
     })
-    
+
     // 当前任务
     this.add.text(400, 10, '当前任务: 调查神秘网络攻击', {
       fontSize: '14px',
-      color: '#888888'
+      color: '#888888',
     })
-    
+
     // 线索数量
     const clueText = this.add.text(900, 10, `线索: 0/${this.gameState.getTotalClues()}`, {
       fontSize: '14px',
-      color: '#ffd700'
+      color: '#ffd700',
     })
-    
+
     // 更新线索显示
     this.events.on('clue-found', () => {
-      clueText.setText(`线索: ${this.gameState.getDiscoveredClues()}/${this.gameState.getTotalClues()}`)
+      clueText.setText(
+        `线索: ${this.gameState.getDiscoveredClues()}/${this.gameState.getTotalClues()}`
+      )
     })
   }
 
   private createChatWindows(): void {
-    this.platforms.forEach(platform => {
-      const window = new ChatWindow(this, platform.x, platform.y, platform.id, platform.name, platform.color)
+    this.platforms.forEach((platform) => {
+      const window = new ChatWindow(
+        this,
+        platform.x,
+        platform.y,
+        platform.id,
+        platform.name,
+        platform.color
+      )
       this.windows.set(platform.id, window)
-      
+
       // 默认只显示WhatsApp
       if (platform.id !== 'whatsapp') {
         window.setVisible(false)
@@ -115,21 +124,24 @@ export class DesktopScene extends Phaser.Scene {
 
     this.platforms.forEach((platform, index) => {
       const x = startX + index * spacing
-      
+
       // 标签背景
       const bg = this.add.graphics()
       bg.fillStyle(platform.color, 0.8)
       bg.fillRoundedRect(x, tabY, 120, 40, 8)
-      
+
       // 标签文字
-      this.add.text(x + 60, tabY + 10, platform.name, {
-        fontSize: '14px',
-        color: '#ffffff',
-        fontFamily: 'sans-serif'
-      }).setOrigin(0.5, 0)
-      
+      this.add
+        .text(x + 60, tabY + 10, platform.name, {
+          fontSize: '14px',
+          color: '#ffffff',
+          fontFamily: 'sans-serif',
+        })
+        .setOrigin(0.5, 0)
+
       // 点击区域
-      this.add.rectangle(x + 60, tabY + 20, 120, 40, 0x000000, 0)
+      this.add
+        .rectangle(x + 60, tabY + 20, 120, 40, 0x000000, 0)
         .setInteractive({ useHandCursor: true })
         .on('pointerdown', () => {
           this.switchWindow(platform.id)
@@ -140,7 +152,7 @@ export class DesktopScene extends Phaser.Scene {
   private switchWindow(windowId: string): void {
     // 播放点击音效
     this.audioManager?.playClick()
-    
+
     // 隐藏当前窗口
     this.windows.get(this.activeWindow)?.setVisible(false)
 
@@ -155,9 +167,7 @@ export class DesktopScene extends Phaser.Scene {
     // 谜题按钮
     this.createToolButton(900, toolbarY, '🧩 谜题', () => {
       this.puzzlePanel?.show()
-      this.puzzlePanel?.updateDiscoveredClues(
-        this.gameState.getDiscoveredCluesSet()
-      )
+      this.puzzlePanel?.updateDiscoveredClues(this.gameState.getDiscoveredCluesSet())
     })
 
     // 笔记按钮
@@ -167,7 +177,9 @@ export class DesktopScene extends Phaser.Scene {
 
     // 帮助按钮
     this.createToolButton(1140, toolbarY, '❓ 帮助', () => {
-      alert('游戏帮助：\n\n1. 点击底部标签切换不同平台\n2. 与NPC对话收集线索\n3. 带🔥标记的消息会消失，要快！\n4. 收集足够线索后解锁谜题')
+      alert(
+        '游戏帮助：\n\n1. 点击底部标签切换不同平台\n2. 与NPC对话收集线索\n3. 带🔥标记的消息会消失，要快！\n4. 收集足够线索后解锁谜题'
+      )
     })
   }
 
@@ -176,12 +188,15 @@ export class DesktopScene extends Phaser.Scene {
     bg.fillStyle(0x2d3748, 0.8)
     bg.fillRoundedRect(x - 50, y, 100, 40, 8)
 
-    this.add.text(x, y + 20, text, {
-      fontSize: '14px',
-      color: '#e2e8f0'
-    }).setOrigin(0.5)
+    this.add
+      .text(x, y + 20, text, {
+        fontSize: '14px',
+        color: '#e2e8f0',
+      })
+      .setOrigin(0.5)
 
-    this.add.rectangle(x, y + 20, 100, 40, 0x000000, 0)
+    this.add
+      .rectangle(x, y + 20, 100, 40, 0x000000, 0)
       .setInteractive({ useHandCursor: true })
       .on('pointerover', () => {
         bg.clear()
@@ -201,11 +216,9 @@ export class DesktopScene extends Phaser.Scene {
     this.events.on('clue-found', () => {
       // 播放线索音效
       this.audioManager?.playClue()
-      
+
       // 更新谜题面板的线索状态
-      this.puzzlePanel?.updateDiscoveredClues(
-        this.gameState.getDiscoveredCluesSet()
-      )
+      this.puzzlePanel?.updateDiscoveredClues(this.gameState.getDiscoveredCluesSet())
     })
 
     // 监听对话完成
@@ -222,18 +235,18 @@ export class DesktopScene extends Phaser.Scene {
   private onDialogueComplete(windowId: string): void {
     // 根据完成的对话加载下一段
     const dialogueMap: Record<string, { chapter: string; npc: string; platform: string }> = {
-      'whatsapp': { chapter: 'chapter1', npc: 'hacker_x', platform: 'telegram' },
-      'telegram': { chapter: 'chapter1', npc: 'guild_member', platform: 'discord' },
-      'discord': { chapter: 'chapter1', npc: 'system', platform: 'email' }
+      whatsapp: { chapter: 'chapter1', npc: 'hacker_x', platform: 'telegram' },
+      telegram: { chapter: 'chapter1', npc: 'guild_member', platform: 'discord' },
+      discord: { chapter: 'chapter1', npc: 'system', platform: 'email' },
     }
 
     const next = dialogueMap[windowId]
     if (next) {
       // 提示玩家切换到下一个平台
       const platformNames: Record<string, string> = {
-        'telegram': 'Telegram',
-        'discord': 'Discord',
-        'email': '邮件'
+        telegram: 'Telegram',
+        discord: 'Discord',
+        email: '邮件',
       }
 
       this.showNotification(`💡 提示：去${platformNames[next.platform]}找线索`)
@@ -246,7 +259,7 @@ export class DesktopScene extends Phaser.Scene {
   private onPuzzleSolved(puzzleId: string): void {
     // 播放成功音效
     this.audioManager?.playSuccess()
-    
+
     if (puzzleId === 'identify-suspect') {
       // 最终谜题解决，游戏通关
       this.showVictoryScreen()
@@ -254,12 +267,14 @@ export class DesktopScene extends Phaser.Scene {
   }
 
   private showNotification(message: string): void {
-    const notif = this.add.text(640, 100, message, {
-      fontSize: '16px',
-      color: '#ffd700',
-      backgroundColor: '#1a1a2e',
-      padding: { x: 20, y: 10 }
-    }).setOrigin(0.5)
+    const notif = this.add
+      .text(640, 100, message, {
+        fontSize: '16px',
+        color: '#ffd700',
+        backgroundColor: '#1a1a2e',
+        padding: { x: 20, y: 10 },
+      })
+      .setOrigin(0.5)
 
     this.tweens.add({
       targets: notif,
@@ -272,10 +287,10 @@ export class DesktopScene extends Phaser.Scene {
             targets: notif,
             alpha: 0,
             duration: 500,
-            onComplete: () => notif.destroy()
+            onComplete: () => notif.destroy(),
           })
         })
-      }
+      },
     })
   }
 
@@ -284,23 +299,33 @@ export class DesktopScene extends Phaser.Scene {
     overlay.fillStyle(0x000000, 0.8)
     overlay.fillRect(0, 0, 1280, 720)
 
-    const title = this.add.text(640, 300, '🎉 恭喜通关！', {
-      fontSize: '48px',
-      color: '#ffd700'
-    }).setOrigin(0.5)
+    const title = this.add
+      .text(640, 300, '🎉 恭喜通关！', {
+        fontSize: '48px',
+        color: '#ffd700',
+      })
+      .setOrigin(0.5)
 
-    const subtitle = this.add.text(640, 380, '你成功破解了谜团，揭露了Phantom的身份！', {
-      fontSize: '20px',
-      color: '#e2e8f0'
-    }).setOrigin(0.5)
+    const subtitle = this.add
+      .text(640, 380, '你成功破解了谜团，揭露了Phantom的身份！', {
+        fontSize: '20px',
+        color: '#e2e8f0',
+      })
+      .setOrigin(0.5)
 
-    const stats = this.add.text(640, 440,
-      `收集线索：${this.gameState.getDiscoveredClues()}/${this.gameState.getTotalClues()}\n` +
-      `感谢游玩《跨平台信使》！`, {
-      fontSize: '16px',
-      color: '#888888',
-      align: 'center'
-    }).setOrigin(0.5)
+    const stats = this.add
+      .text(
+        640,
+        440,
+        `收集线索：${this.gameState.getDiscoveredClues()}/${this.gameState.getTotalClues()}\n` +
+          `感谢游玩《跨平台信使》！`,
+        {
+          fontSize: '16px',
+          color: '#888888',
+          align: 'center',
+        }
+      )
+      .setOrigin(0.5)
 
     // 动画效果
     this.tweens.add({
@@ -308,7 +333,7 @@ export class DesktopScene extends Phaser.Scene {
       scale: { from: 0.8, to: 1 },
       alpha: { from: 0, to: 1 },
       duration: 800,
-      ease: 'Back.out'
+      ease: 'Back.out',
     })
   }
 

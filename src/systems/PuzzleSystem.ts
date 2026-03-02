@@ -31,7 +31,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
         // 接受 192.168.1.100 或类似格式
         return input.includes('192.168') && input.includes('100')
       },
-      hint: 'WhatsApp给了前半，Telegram给了后半，组合起来是 192.168.1.100'
+      hint: 'WhatsApp给了前半，Telegram给了后半，组合起来是 192.168.1.100',
     })
 
     // 谜题2: 凯撒密码
@@ -44,7 +44,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
         const normalized = input.toLowerCase().trim()
         return normalized === 'attack at dawn' || normalized === 'attack'
       },
-      hint: '每个字母向前移动3位，d→a, w→t...'
+      hint: '每个字母向前移动3位，d→a, w→t...',
     })
 
     // 谜题3: 嫌疑人识别
@@ -56,7 +56,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
       checkSolution: (input: string) => {
         return input.toLowerCase().includes('phantom')
       },
-      hint: 'Discord上的那个人叫自己什么？'
+      hint: 'Discord上的那个人叫自己什么？',
     })
 
     // 测试用谜题
@@ -68,7 +68,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
       checkSolution: (input: string) => {
         return input.includes('192.168') && input.includes('100')
       },
-      hint: '组合 IP 地址: 192.168.1.100'
+      hint: '组合 IP 地址: 192.168.1.100',
     })
   }
 
@@ -80,7 +80,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
     const puzzle = this.puzzles.get(puzzleId)
     if (!puzzle) return false
 
-    return puzzle.requiredClues.every(clue => discoveredClues.has(clue))
+    return puzzle.requiredClues.every((clue) => discoveredClues.has(clue))
   }
 
   attemptSolution(puzzleId: string, input: string): boolean {
@@ -88,7 +88,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
     if (!puzzle) return false
 
     const isCorrect = puzzle.checkSolution(input)
-    
+
     if (isCorrect && !this.solvedPuzzles.has(puzzleId)) {
       this.solvedPuzzles.add(puzzleId)
       this.emit('puzzle-solved', puzzleId)
@@ -102,7 +102,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
   }
 
   getAvailablePuzzles(discoveredClues: Set<string>): Puzzle[] {
-    return Array.from(this.puzzles.values()).filter(puzzle => {
+    return Array.from(this.puzzles.values()).filter((puzzle) => {
       return this.canAttempt(puzzle.id, discoveredClues)
     })
   }
@@ -115,7 +115,7 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
   getProgress(): { total: number; solved: number } {
     return {
       total: this.puzzles.size,
-      solved: this.solvedPuzzles.size
+      solved: this.solvedPuzzles.size,
     }
   }
 
@@ -125,7 +125,8 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
 
   // 为测试添加的方法
   validateIPAddress(ip: string): boolean {
-    const pattern = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
+    const pattern =
+      /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
     return pattern.test(ip)
   }
 
@@ -134,9 +135,9 @@ export class PuzzleSystem extends Phaser.Events.EventEmitter {
     if (!puzzle) return false
     if (!this.gameState) return false
     if (puzzle.requiredClues.length === 0) return false
-    
+
     // 只要有至少一个必需线索就可以尝试
-    return puzzle.requiredClues.some(clue => this.gameState.hasClue(clue))
+    return puzzle.requiredClues.some((clue) => this.gameState.hasClue(clue))
   }
 
   solve(puzzleId: string, answer: string): { success: boolean; hint?: string; error?: string } {

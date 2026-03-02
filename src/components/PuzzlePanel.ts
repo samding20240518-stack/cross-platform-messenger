@@ -41,18 +41,22 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
     this.add(bg)
 
     // 标题
-    const title = this.scene.add.text(this.panelWidth / 2, 15, '🧩 谜题挑战', {
-      fontSize: '20px',
-      color: '#ffd700',
-      fontFamily: 'sans-serif'
-    }).setOrigin(0.5, 0)
+    const title = this.scene.add
+      .text(this.panelWidth / 2, 15, '🧩 谜题挑战', {
+        fontSize: '20px',
+        color: '#ffd700',
+        fontFamily: 'sans-serif',
+      })
+      .setOrigin(0.5, 0)
     this.add(title)
 
     // 关闭按钮
-    const closeBtn = this.scene.add.text(this.panelWidth - 30, 15, '✕', {
-      fontSize: '20px',
-      color: '#888888'
-    }).setOrigin(0.5, 0)
+    const closeBtn = this.scene.add
+      .text(this.panelWidth - 30, 15, '✕', {
+        fontSize: '20px',
+        color: '#888888',
+      })
+      .setOrigin(0.5, 0)
       .setInteractive({ useHandCursor: true })
       .on('pointerdown', () => this.hide())
     this.add(closeBtn)
@@ -65,14 +69,15 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
     this.clearContent()
 
     const availablePuzzles = this.puzzleSystem.getAvailablePuzzles(this.discoveredClues)
-    
+
     if (availablePuzzles.length === 0) {
-      const msg = this.scene.add.text(this.panelWidth / 2, 150, 
-        '暂无可解谜题\n继续收集线索后重试', {
-        fontSize: '16px',
-        color: '#888888',
-        align: 'center'
-      }).setOrigin(0.5)
+      const msg = this.scene.add
+        .text(this.panelWidth / 2, 150, '暂无可解谜题\n继续收集线索后重试', {
+          fontSize: '16px',
+          color: '#888888',
+          align: 'center',
+        })
+        .setOrigin(0.5)
       this.add(msg)
       return
     }
@@ -88,9 +93,8 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
       this.add(bg)
 
       // 状态图标
-      const statusIcon = this.scene.add.text(35, y + 15, 
-        isSolved ? '✅' : '🧩', {
-        fontSize: '24px'
+      const statusIcon = this.scene.add.text(35, y + 15, isSolved ? '✅' : '🧩', {
+        fontSize: '24px',
       })
       this.add(statusIcon)
 
@@ -98,7 +102,7 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
       const name = this.scene.add.text(70, y + 10, puzzle.name, {
         fontSize: '16px',
         color: isSolved ? '#4ade80' : '#e2e8f0',
-        fontFamily: 'sans-serif'
+        fontFamily: 'sans-serif',
       })
       this.add(name)
 
@@ -106,15 +110,14 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
       const desc = this.scene.add.text(70, y + 32, puzzle.description, {
         fontSize: '11px',
         color: '#888888',
-        wordWrap: { width: this.panelWidth - 100 }
+        wordWrap: { width: this.panelWidth - 100 },
       })
       this.add(desc)
 
       // 点击区域
       if (!isSolved) {
-        const hitArea = this.scene.add.rectangle(
-          this.panelWidth / 2, y + 30, this.panelWidth - 40, 60, 0x000000, 0
-        )
+        const hitArea = this.scene.add
+          .rectangle(this.panelWidth / 2, y + 30, this.panelWidth - 40, 60, 0x000000, 0)
           .setInteractive({ useHandCursor: true })
           .on('pointerdown', () => this.showPuzzleDetail(puzzle.id))
         this.add(hitArea)
@@ -130,28 +133,34 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
     this.clearContent()
 
     // 返回按钮
-    const backBtn = this.scene.add.text(20, 15, '← 返回', {
-      fontSize: '14px',
-      color: '#888888'
-    }).setInteractive({ useHandCursor: true })
+    const backBtn = this.scene.add
+      .text(20, 15, '← 返回', {
+        fontSize: '14px',
+        color: '#888888',
+      })
+      .setInteractive({ useHandCursor: true })
       .on('pointerdown', () => this.showPuzzleList())
     this.add(backBtn)
 
     // 谜题名称
-    const name = this.scene.add.text(this.panelWidth / 2, 50, puzzle.name, {
-      fontSize: '18px',
-      color: '#ffd700',
-      fontFamily: 'sans-serif'
-    }).setOrigin(0.5)
+    const name = this.scene.add
+      .text(this.panelWidth / 2, 50, puzzle.name, {
+        fontSize: '18px',
+        color: '#ffd700',
+        fontFamily: 'sans-serif',
+      })
+      .setOrigin(0.5)
     this.add(name)
 
     // 描述
-    const desc = this.scene.add.text(this.panelWidth / 2, 80, puzzle.description, {
-      fontSize: '13px',
-      color: '#e2e8f0',
-      align: 'center',
-      wordWrap: { width: this.panelWidth - 40 }
-    }).setOrigin(0.5, 0)
+    const desc = this.scene.add
+      .text(this.panelWidth / 2, 80, puzzle.description, {
+        fontSize: '13px',
+        color: '#e2e8f0',
+        align: 'center',
+        wordWrap: { width: this.panelWidth - 40 },
+      })
+      .setOrigin(0.5, 0)
     this.add(desc)
 
     // 输入框背景
@@ -163,16 +172,17 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
     this.add(inputBg)
 
     // 输入提示
-    this.inputText = this.scene.add.text(this.panelWidth / 2, 160, '点击输入答案...', {
-      fontSize: '14px',
-      color: '#666666'
-    }).setOrigin(0.5)
+    this.inputText = this.scene.add
+      .text(this.panelWidth / 2, 160, '点击输入答案...', {
+        fontSize: '14px',
+        color: '#666666',
+      })
+      .setOrigin(0.5)
     this.add(this.inputText)
 
     // 点击输入区域
-    const inputArea = this.scene.add.rectangle(
-      this.panelWidth / 2, 160, this.panelWidth - 100, 40, 0x000000, 0
-    )
+    const inputArea = this.scene.add
+      .rectangle(this.panelWidth / 2, 160, this.panelWidth - 100, 40, 0x000000, 0)
       .setInteractive({ useHandCursor: true })
       .on('pointerdown', () => this.promptForInput())
     this.add(inputArea)
@@ -184,16 +194,24 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
     this.add(submitBtn)
 
     // 提示按钮
-    const hintBtn = this.createButton(this.panelWidth / 2, 250, '💡 获取提示', () => {
-      this.showHint(puzzleId)
-    }, 0x4a5568)
+    const hintBtn = this.createButton(
+      this.panelWidth / 2,
+      250,
+      '💡 获取提示',
+      () => {
+        this.showHint(puzzleId)
+      },
+      0x4a5568
+    )
     this.add(hintBtn)
 
     // 反馈文字
-    this.feedbackText = this.scene.add.text(this.panelWidth / 2, 290, '', {
-      fontSize: '14px',
-      color: '#ffffff'
-    }).setOrigin(0.5)
+    this.feedbackText = this.scene.add
+      .text(this.panelWidth / 2, 290, '', {
+        fontSize: '14px',
+        color: '#ffffff',
+      })
+      .setOrigin(0.5)
     this.add(this.feedbackText)
   }
 
@@ -211,13 +229,16 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
     bg.fillRoundedRect(-60, -15, 120, 30, 6)
     container.add(bg)
 
-    const label = this.scene.add.text(0, 0, text, {
-      fontSize: '14px',
-      color: '#ffffff'
-    }).setOrigin(0.5)
+    const label = this.scene.add
+      .text(0, 0, text, {
+        fontSize: '14px',
+        color: '#ffffff',
+      })
+      .setOrigin(0.5)
     container.add(label)
 
-    const hitArea = this.scene.add.rectangle(0, 0, 120, 30, 0x000000, 0)
+    const hitArea = this.scene.add
+      .rectangle(0, 0, 120, 30, 0x000000, 0)
       .setInteractive({ useHandCursor: true })
       .on('pointerover', () => {
         bg.clear()
@@ -264,7 +285,7 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
       this.scene.tweens.add({
         targets: this.feedbackText,
         alpha: { from: 0, to: 1 },
-        duration: 300
+        duration: 300,
       })
     }
   }
@@ -276,13 +297,14 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
 
   private onPuzzleSolved(puzzleId: string): void {
     this.scene.events.emit('puzzle-solved', puzzleId)
-    
+
     // 显示成功动画
-    const successText = this.scene.add.text(this.panelWidth / 2, this.panelHeight / 2, 
-      '🎉 谜题解开！', {
-      fontSize: '28px',
-      color: '#4ade80'
-    }).setOrigin(0.5)
+    const successText = this.scene.add
+      .text(this.panelWidth / 2, this.panelHeight / 2, '🎉 谜题解开！', {
+        fontSize: '28px',
+        color: '#4ade80',
+      })
+      .setOrigin(0.5)
     this.add(successText)
 
     this.scene.tweens.add({
@@ -294,14 +316,14 @@ export class PuzzlePanel extends Phaser.GameObjects.Container {
       onComplete: () => {
         successText.destroy()
         this.showPuzzleList()
-      }
+      },
     })
   }
 
   private clearContent(): void {
     // 保留背景和标题，移除其他元素
     const toRemove = this.list.filter((_child, index) => index > 2)
-    toRemove.forEach(c => c.destroy())
+    toRemove.forEach((c) => c.destroy())
   }
 
   updateDiscoveredClues(clues: Set<string>): void {

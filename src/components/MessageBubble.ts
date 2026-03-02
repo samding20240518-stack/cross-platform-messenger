@@ -44,7 +44,7 @@ export class MessageBubble extends Phaser.GameObjects.Container {
       fontSize: '14px',
       color: this.isReceivedFlag ? '#ffffff' : '#e2e8f0',
       fontFamily: 'sans-serif',
-      wordWrap: { width: maxWidth - padding * 2 }
+      wordWrap: { width: maxWidth - padding * 2 },
     })
 
     const textWidth = this.textObj.width
@@ -68,7 +68,7 @@ export class MessageBubble extends Phaser.GameObjects.Container {
       // 倒计时文字
       const timerText = this.scene.add.text(bubbleWidth - 30, 8, `${this.burnTime}s`, {
         fontSize: '10px',
-        color: '#ff6b35'
+        color: '#ff6b35',
       })
       this.add(timerText)
     }
@@ -85,7 +85,7 @@ export class MessageBubble extends Phaser.GameObjects.Container {
         scale: 0.8,
         duration: 500,
         yoyo: true,
-        repeat: -1
+        repeat: -1,
       })
     }
   }
@@ -103,7 +103,7 @@ export class MessageBubble extends Phaser.GameObjects.Container {
           if (!this.isDiscovered) {
             onBurn()
           }
-        }
+        },
       })
     }
   }
@@ -120,7 +120,7 @@ export class MessageBubble extends Phaser.GameObjects.Container {
       duration: 500,
       onComplete: () => {
         this.setVisible(false)
-      }
+      },
     })
   }
 
@@ -156,7 +156,7 @@ export class MessageBubble extends Phaser.GameObjects.Container {
       targets: flash,
       alpha: 0,
       duration: 800,
-      onComplete: () => flash.destroy()
+      onComplete: () => flash.destroy(),
     })
   }
 

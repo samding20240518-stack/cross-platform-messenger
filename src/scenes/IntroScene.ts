@@ -24,13 +24,17 @@ export class IntroScene extends Phaser.Scene {
     const chars = '01'
     for (let i = 0; i < 30; i++) {
       const x = Phaser.Math.Between(0, 1280)
-      const text = this.add.text(x, Phaser.Math.Between(-100, 720), 
-        chars[Phaser.Math.Between(0, 1)], {
-        fontSize: '14px',
-        color: '#00ff00'
-      })
+      const text = this.add.text(
+        x,
+        Phaser.Math.Between(-100, 720),
+        chars[Phaser.Math.Between(0, 1)],
+        {
+          fontSize: '14px',
+          color: '#00ff00',
+        }
+      )
       text.setAlpha(0.2)
-      
+
       this.tweens.add({
         targets: text,
         y: 800,
@@ -39,7 +43,7 @@ export class IntroScene extends Phaser.Scene {
         onRepeat: () => {
           text.setY(-20)
           text.setX(Phaser.Math.Between(0, 1280))
-        }
+        },
       })
     }
   }
@@ -49,40 +53,52 @@ export class IntroScene extends Phaser.Scene {
     const centerY = 360
 
     // 标题
-    const title = this.add.text(centerX, centerY - 100, '跨平台信使', {
-      fontSize: '64px',
-      color: '#00ff00',
-      fontFamily: 'monospace',
-      stroke: '#00ff00',
-      strokeThickness: 2
-    }).setOrigin(0.5)
-    .setAlpha(0)
+    const title = this.add
+      .text(centerX, centerY - 100, '跨平台信使', {
+        fontSize: '64px',
+        color: '#00ff00',
+        fontFamily: 'monospace',
+        stroke: '#00ff00',
+        strokeThickness: 2,
+      })
+      .setOrigin(0.5)
+      .setAlpha(0)
 
     // 副标题
-    const subtitle = this.add.text(centerX, centerY - 20, 'CROSS-PLATFORM MESSENGER', {
-      fontSize: '24px',
-      color: '#888888',
-      fontFamily: 'monospace'
-    }).setOrigin(0.5)
-    .setAlpha(0)
+    const subtitle = this.add
+      .text(centerX, centerY - 20, 'CROSS-PLATFORM MESSENGER', {
+        fontSize: '24px',
+        color: '#888888',
+        fontFamily: 'monospace',
+      })
+      .setOrigin(0.5)
+      .setAlpha(0)
 
     // 描述
-    const desc = this.add.text(centerX, centerY + 60, 
-      '你是一名网络安全调查员\n在多个聊天平台间收集线索\n破解神秘的网络犯罪事件', {
-      fontSize: '18px',
-      color: '#aaaaaa',
-      align: 'center',
-      lineSpacing: 10
-    }).setOrigin(0.5)
-    .setAlpha(0)
+    const desc = this.add
+      .text(
+        centerX,
+        centerY + 60,
+        '你是一名网络安全调查员\n在多个聊天平台间收集线索\n破解神秘的网络犯罪事件',
+        {
+          fontSize: '18px',
+          color: '#aaaaaa',
+          align: 'center',
+          lineSpacing: 10,
+        }
+      )
+      .setOrigin(0.5)
+      .setAlpha(0)
 
     // 提示
-    const hint = this.add.text(centerX, centerY + 200, '点击任意处开始调查', {
-      fontSize: '16px',
-      color: '#00ff00',
-      fontFamily: 'monospace'
-    }).setOrigin(0.5)
-    .setAlpha(0)
+    const hint = this.add
+      .text(centerX, centerY + 200, '点击任意处开始调查', {
+        fontSize: '16px',
+        color: '#00ff00',
+        fontFamily: 'monospace',
+      })
+      .setOrigin(0.5)
+      .setAlpha(0)
 
     // 打字机效果动画
     this.typewriterEffect(title, '跨平台信使', 100, () => {
@@ -97,9 +113,9 @@ export class IntroScene extends Phaser.Scene {
             alpha: { from: 0, to: 1 },
             duration: 500,
             yoyo: true,
-            repeat: -1
+            repeat: -1,
           })
-        }
+        },
       })
     })
 
@@ -133,7 +149,7 @@ export class IntroScene extends Phaser.Scene {
           onComplete?.()
         }
       },
-      repeat: fullText.length - 1
+      repeat: fullText.length - 1,
     })
   }
 }

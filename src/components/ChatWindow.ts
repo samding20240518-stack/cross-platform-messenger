@@ -21,7 +21,7 @@ export class ChatWindow extends Phaser.GameObjects.Container {
     private themeColor: number
   ) {
     super(scene, x, y)
-    
+
     this.createWindow()
     scene.add.existing(this)
   }
@@ -38,11 +38,13 @@ export class ChatWindow extends Phaser.GameObjects.Container {
     this.add(titleBar)
 
     // 标题文字
-    const titleText = this.scene.add.text(200, 30, this.windowName, {
-      fontSize: '16px',
-      color: '#ffffff',
-      fontFamily: 'sans-serif'
-    }).setOrigin(0.5)
+    const titleText = this.scene.add
+      .text(200, 30, this.windowName, {
+        fontSize: '16px',
+        color: '#ffffff',
+        fontFamily: 'sans-serif',
+      })
+      .setOrigin(0.5)
     this.add(titleText)
 
     // 消息容器
@@ -81,13 +83,13 @@ export class ChatWindow extends Phaser.GameObjects.Container {
     if (msg.type === 'choice') {
       const choices = (msg as any).options || ['继续...']
       const selectedIndex = await this.showInputChoices(choices)
-      
+
       // 显示玩家选择
       const selectedText = choices[selectedIndex]
       this.addPlayerMessage(selectedText)
-      
+
       this.dialogueStep++
-      
+
       // 延迟后显示NPC回复
       this.scene.time.delayedCall(800, () => {
         this.showNextMessage()
@@ -133,7 +135,7 @@ export class ChatWindow extends Phaser.GameObjects.Container {
 
     // 检查下一条消息
     const nextMsg = this.currentDialogue.messages[this.dialogueStep]
-    
+
     if (nextMsg) {
       if (nextMsg.type === 'npc') {
         // NPC消息自动继续
@@ -158,16 +160,18 @@ export class ChatWindow extends Phaser.GameObjects.Container {
   private burnMessage(bubble: MessageBubble): void {
     bubble.burn()
     // 阅后即焚提示
-    const burnText = this.scene.add.text(200, 300, '🔥 消息已焚毁', {
-      fontSize: '18px',
-      color: '#ff6b35'
-    }).setOrigin(0.5)
-    
+    const burnText = this.scene.add
+      .text(200, 300, '🔥 消息已焚毁', {
+        fontSize: '18px',
+        color: '#ff6b35',
+      })
+      .setOrigin(0.5)
+
     this.scene.tweens.add({
       targets: burnText,
       alpha: 0,
       duration: 2000,
-      onComplete: () => burnText.destroy()
+      onComplete: () => burnText.destroy(),
     })
   }
 

@@ -31,10 +31,12 @@ export class InputPanel extends Phaser.GameObjects.Container {
     this.add(bg)
 
     // 标题
-    const title = this.scene.add.text(this.panelWidth / 2, 10, '💬 选择回复', {
-      fontSize: '12px',
-      color: '#888888'
-    }).setOrigin(0.5, 0)
+    const title = this.scene.add
+      .text(this.panelWidth / 2, 10, '💬 选择回复', {
+        fontSize: '12px',
+        color: '#888888',
+      })
+      .setOrigin(0.5, 0)
     this.add(title)
   }
 
@@ -59,20 +61,14 @@ export class InputPanel extends Phaser.GameObjects.Container {
         fontSize: '13px',
         color: '#e2e8f0',
         fontFamily: 'sans-serif',
-        wordWrap: { width: this.panelWidth - 40 }
+        wordWrap: { width: this.panelWidth - 40 },
       })
       this.add(text)
       this.choices.push(text)
 
       // 点击区域
-      const hitArea = this.scene.add.rectangle(
-        this.panelWidth / 2,
-        y + 15,
-        this.panelWidth - 20,
-        30,
-        0x000000,
-        0
-      )
+      const hitArea = this.scene.add
+        .rectangle(this.panelWidth / 2, y + 15, this.panelWidth - 20, 30, 0x000000, 0)
         .setInteractive({ useHandCursor: true })
         .on('pointerover', () => {
           bg.clear()
