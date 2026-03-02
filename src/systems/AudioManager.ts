@@ -5,11 +5,8 @@ export class AudioManager extends Phaser.Events.EventEmitter {
   private isMuted: boolean = false
   private volume: number = 1.0
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  constructor(_scene?: Phaser.Scene) {
+  constructor() {
     super()
-    // Scene reserved for future use
-    void _scene
     this.createSounds()
   }
 

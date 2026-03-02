@@ -37,7 +37,7 @@ if [ ! -d ".git" ]; then
     echo -e "${YELLOW}📁 初始化本地Git仓库...${NC}"
     git init
     git add .
-    git commit -m "Initial commit: Cross-Platform Messenger v1.1"
+    git commit -m "Initial commit: Cross-Platform Messenger v0.2.0"
 fi
 
 # 创建GitHub仓库

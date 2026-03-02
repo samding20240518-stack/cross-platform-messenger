@@ -92,6 +92,12 @@ export class MessageBubble extends Phaser.GameObjects.Container {
 
   setBurnTimer(seconds: number, onBurn: () => void): void {
     if (this.burnIcon) {
+      // 播放阅后即焚警告音效
+      const audioManager = (this.scene as any).audioManager
+      if (audioManager) {
+        audioManager.playGameSound('burn-warning')
+      }
+      
       // 闪烁动画
       this.scene.tweens.add({
         targets: this.burnIcon,
@@ -127,6 +133,12 @@ export class MessageBubble extends Phaser.GameObjects.Container {
   markAsDiscovered(): void {
     if (this.isDiscovered) return
     this.isDiscovered = true
+
+    // 播放线索发现音效（符合工程规范）
+    const audioManager = (this.scene as any).audioManager
+    if (audioManager) {
+      audioManager.playClue()
+    }
 
     // 变灰表示已收集
     this.bg.clear()

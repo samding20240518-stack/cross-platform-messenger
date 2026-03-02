@@ -28,7 +28,7 @@ export class DesktopScene extends Phaser.Scene {
 
   create(): void {
     // 初始化音效管理器
-    this.audioManager = new AudioManager(this)
+    this.audioManager = new AudioManager()
 
     // 创建桌面背景
     this.createDesktopBackground()

@@ -31,7 +31,7 @@ git init
 git add .
 
 # 提交
-git commit -m "Initial commit: Cross-Platform Messenger v1.1"
+git commit -m "Initial commit: Cross-Platform Messenger v0.2.0"
 
 # 添加远程仓库（替换为你的用户名）
 git remote add origin https://github.com/你的用户名/cross-platform-messenger.git
