@@ -14,7 +14,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["phaser", "jest"]
+    "typeRoots": ["./node_modules/@types", "./node_modules/phaser/types"]
   },
   "include": ["src"]
 }
